@@ -16,8 +16,8 @@ class RecordsController extends Controller
     public function index($id)
     {
         $patient = Patient::find($id);
-        $records = $patient->records()->orderBy('id', 'desc')->get();
-        
+        // $records = $patient->records()->orderBy('id', 'desc')->get();
+         $records = $patient->records()->get();
         // view の呼び出し
         // ある利用者とその相談記録一覧を表示させる
         return view('patients.records', compact('patient', 'records'));
@@ -83,13 +83,14 @@ class RecordsController extends Controller
      * @param  \App\Record  $record
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $record_id)
+    public function show(Request $request, $id, $record_id)
     {
+        $index = $request->input('index');
         $patient = Patient::find($id);
         $record = Record::find($record_id);
         
         // view の呼び出し
-        return view('records.show', compact('patient', 'record'));
+        return view('records.show', compact('patient', 'record', 'index'));
     }
 
     /**

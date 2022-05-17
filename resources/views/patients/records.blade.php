@@ -17,9 +17,9 @@
                 <th>記録した職員</th>
                 <th>記録日時</th>
             </tr>
-        @foreach($records as $record)
+        @foreach($records as $key => $record)
             <tr>
-                <td>{!! link_to_route('records.show', $record->id, [$patient->id, $record->id], ['class' => 'btn btn-success']) !!}</td>
+                <td>{!! link_to_route('records.show', ($key + 1), [$patient->id, $record->id, 'index' => $key + 1], ['class' => 'btn btn-success']) !!}</td>
                 <td>{{ $record->content }}</td>
                 <td><img src="/uploads/{{ $record->image }}" alt="画像はありません" id="case_photo"></td>
                 <td>{{ $record->user->name }}</td>

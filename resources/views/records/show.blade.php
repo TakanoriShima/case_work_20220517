@@ -2,7 +2,7 @@
 @section('title', $patient->name . 'の記録番号:' . $record->id . 'の詳細')
 @section('content')           
     <div class="row mt-5">
-        <h1 id="title" class="col-sm-12 text-center text-success mt-4 mb-3">{{ $patient->name }}の記録番号: {{ $record->id }}の詳細</h1>
+        <h1 id="title" class="col-sm-12 text-center text-success mt-4 mb-3">{{ $patient->name }}の記録番号: {{ $index }}の詳細</h1>
     </div>
     <table class="table table-bordered table-striped text-center mt-4">
         <tr>
@@ -13,7 +13,7 @@
             <th>記録日時</th>
         </tr>
         <tr>
-            <td>{{ $record->id }}</td>
+            <td>{{ $index }}</td>
             <td>{{ $record->content }}</td>
             <td><img src="/uploads/{{ $record->image }}" alt="画像はありません" id="case_photo"></td>
             <td>{{ $record->user->name }}</td>
